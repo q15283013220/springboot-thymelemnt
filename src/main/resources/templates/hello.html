@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1 th:text="${message}">Hello World</h1>
+<span th:text="'kkkk'+${message}+'ssss'"></span>
+<br>
+<span th:text="|sss${message}!|"></span>
+
+<h1>if</h1>
+<a th:if="${flag=='yes'}" th:href="@{http://www.baidu.com}">baidu</a>
+<a th:unless="${flag!='no'}" th:href="@{http://www.baidu.com}">baidu</a>
+<a th:if="${flag==message}" th:href="@{http://www.baidu.com}">baidu</a>
+<a th:if="${flag!=message}" th:href="@{http://www.baidu.com}">baidu</a>
+
+<h2>for循环</h2>
+<tr th:each="user,iterStat : ${list}">
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.age}"></td>
+    <td th:text="${user.pass}"></td>
+</tr>
+
+<h1>eq</h1>
+<input th:value="${name}"/>
+<br/>
+<input th:value="${age gt 30 ? '中年':'年轻'}"/>
+<br/>
+<a th:if="${flag eq 'yes'}" th:href="@{http://favorites.ren/}"> favorites </a>
+
+<div th:switch="${sex}">
+    <p th:case="'woman'">她是一个姑娘...</p>
+    <p th:case="'man'">这是一个爷们!</p>
+    <!-- *: case的默认的选项 -->
+    <p th:case="*">未知性别的一个家伙。</p>
+</div>
+</body>
+</html>
